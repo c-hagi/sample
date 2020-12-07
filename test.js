@@ -16,6 +16,7 @@ function Square(props){
       super(props);
       this.state = {
         squares: Array(9).fill(null),
+        xIsNext:true,
       };
     }
   
