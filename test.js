@@ -7,9 +7,9 @@ class Square extends React.Component {
     return (
         <button
           className="square"
-          onClick={() => this.props.onClick(i)}
+          onClick={() => this.props.onClick()}
         >
-          {this.props.onClick()}
+          {this.props.value}
         </button>
        );
     }
@@ -22,6 +22,12 @@ class Square extends React.Component {
       };
     }
   
+    handleClick(i){
+        const squares = this.state.squares.slice();
+        squares[i] = 'X';
+        this.setState({squares: squares});
+    }
+
     renderSquare(i) {
       return (
         <Square value={this.state.squares[i]} 
@@ -72,4 +78,3 @@ class Square extends React.Component {
     <Game />,
     document.getElementById('root')
   );
-  # sample
