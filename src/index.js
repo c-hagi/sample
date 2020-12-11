@@ -93,6 +93,11 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(<Game />, document.getElementById("root"));
+// ReactDOM.render() は 2 つの引数で React の関数を呼び出す
+//<Game />: レンダリングしたいコンポーネント。
+//内部にコンポーネントをレンダリングする DOM 要素: root 要素。
+//これらはすべて、Gameコンポーネントを最初のコンポーネントとして 
+//React アプリケーションをレンダリングすることを React に伝える。
 
 function calculateWinner(squares) {
   const lines = [
