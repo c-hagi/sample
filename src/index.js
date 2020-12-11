@@ -46,7 +46,6 @@ class Game extends React.Component {
   }
 
   jumpTo(step) {
-  //jumpToメソッドを定義
     this.setState({
       stepNumber: step,
       //stepNumerが更新されるようになる
@@ -57,13 +56,9 @@ class Game extends React.Component {
   }
 
   render() {
-　//render メソッドが返すのは画面上に表示したいものの説明書き
-  //render は、描画すべきものの軽量な記述形式であり、React 要素というものを返す
-
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
     const moves = history.map((step, move) => {
       const desc = move ?
         'Go to move #' + move :
@@ -102,12 +97,6 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(<Game />, document.getElementById("root"));
-// ReactDOM.render() は 2 つの引数で React の関数を呼び出す
-//<Game />: レンダリングしたいコンポーネント。
-//内部にコンポーネントをレンダリングする DOM 要素: root 要素。
-//これらはすべて、Gameコンポーネントを最初のコンポーネントとして 
-//React アプリケーションをレンダリングすることを React に伝える。
-
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],

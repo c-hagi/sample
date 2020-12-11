@@ -7,8 +7,6 @@ import Square from './square';
 
 export default class Board extends React.Component {
 
-//Board の renderSquare メソッド内で、props として 
-//valueとonClickの値をSquare に渡す
   renderSquare(i) {
     return (
       <Square
