@@ -14,11 +14,13 @@ class Game extends React.Component {
         }
       ],
       stepNumber: 0,
+      //何手目の状態を見ているのかを表す(stateの初期値として0)
       xIsNext: true
     };
   }
 
   handleClick(i) {
+    //マス目をクリックしたときに実行される 
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -38,9 +40,13 @@ class Game extends React.Component {
   }
 
   jumpTo(step) {
+  //jumpToメソッドを定義
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0
+      //stepNumerが更新されるようになる
+
+      //xIsNext: (step % 2) === 0,　(← なくても動作に変化なし)
+      //stepNumber の値が偶数だった場合は xIsNext を true
     });
   }
 
