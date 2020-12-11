@@ -5,9 +5,15 @@ import Board  from './Board';
 
 
 class Game extends React.Component {
+//Game コンポーネントは盤面とプレースホルダーを描画している。
+
   constructor(props) {
     super(props);
     this.state = {
+//React コンポーネントはコンストラクタで this.state を設定することで、状態を持つことができるようになる。
+//現在の状態を this.state に保存
+//定義されているコンポーネント内でプライベートと見なすべきもの
+
       history: [
         {
           squares: Array(9).fill(null)
@@ -51,6 +57,9 @@ class Game extends React.Component {
   }
 
   render() {
+　//render メソッドが返すのは画面上に表示したいものの説明書き
+  //render は、描画すべきものの軽量な記述形式であり、React 要素というものを返す
+
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
