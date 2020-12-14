@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
 import Board  from './Board';
 import calculateWinner from './calculateWinner.'
@@ -45,6 +44,7 @@ export default class Game extends React.Component {
         xIsNext: (step % 2) === 0,
       });
     }
+    // xIsNext：どちらのプレーヤの手番なのかを決める 
   
     render() {
       const history = this.state.history;
