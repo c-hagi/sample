@@ -5,20 +5,28 @@ import Board  from './Board';
 
 
 class Game extends React.Component {
+//Game コンポーネントは盤面とプレースホルダーを描画している。
+
   constructor(props) {
     super(props);
     this.state = {
+//React コンポーネントはコンストラクタで this.state を設定することで、状態を持つことができるようになる。
+//現在の状態を this.state に保存
+//定義されているコンポーネント内でプライベートと見なすべきもの
+
       history: [
         {
           squares: Array(9).fill(null)
         }
       ],
       stepNumber: 0,
+      //何手目の状態を見ているのかを表す(stateの初期値として0)
       xIsNext: true
     };
   }
 
   handleClick(i) {
+    //マス目をクリックしたときに実行される 
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
@@ -40,7 +48,10 @@ class Game extends React.Component {
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      xIsNext: (step % 2) === 0
+      //stepNumerが更新されるようになる
+
+      //xIsNext: (step % 2) === 0,　(← なくても動作に変化なし)
+      //stepNumber の値が偶数だった場合は xIsNext を true
     });
   }
 
@@ -48,7 +59,6 @@ class Game extends React.Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
     const moves = history.map((step, move) => {
       const desc = move ?
         'Go to move #' + move :
@@ -87,7 +97,6 @@ class Game extends React.Component {
 // ========================================
 
 ReactDOM.render(<Game />, document.getElementById("root"));
-
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
