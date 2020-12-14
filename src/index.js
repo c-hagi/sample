@@ -3,17 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Board  from './Board';
 
-
 class Game extends React.Component {
-//Game コンポーネントは盤面とプレースホルダーを描画している。
-
   constructor(props) {
     super(props);
     this.state = {
-//React コンポーネントはコンストラクタで this.state を設定することで、状態を持つことができるようになる。
-//現在の状態を this.state に保存
-//定義されているコンポーネント内でプライベートと見なすべきもの
-
       history: [
         {
           squares: Array(9).fill(null)
@@ -48,10 +41,7 @@ class Game extends React.Component {
   jumpTo(step) {
     this.setState({
       stepNumber: step,
-      //stepNumerが更新されるようになる
-
-      //xIsNext: (step % 2) === 0,　(← なくても動作に変化なし)
-      //stepNumber の値が偶数だった場合は xIsNext を true
+      xIsNext: (step % 2) === 0,
     });
   }
 
