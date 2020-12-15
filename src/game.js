@@ -4,19 +4,14 @@ import Board  from './Board';
 import calculateWinner from './calculateWinner.'
 
 export default class Game extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        history: [
-          {
-            squares: Array(9).fill(null) 
-          }
-        ],
-        stepNumber: 0,
-        // 何手目の状態を見ているのかを表す(stateの初期値として0)
-        xIsNext: true
-      };
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: [{ squares: Array(9).fill(null) }],
+      stepNumber: 0,
+      xIsNext: true,
+    };
+  }
   
     handleClick(i) {
       //マス目をクリックしたときに実行される 
