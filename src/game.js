@@ -2,18 +2,20 @@ import React from 'react';
 import './index.css';
 import Board  from './Board';
 import calculateWinner from './calculateWinner.'
+import { History } from '../../interface'
+
+interface GameState {
+  history: History[];
+  stepNumber: number;
+  xIsNext: boolean;
+}
 
 export default class Game extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        history: [
-          {
-            squares: Array(9).fill(null) 
-          }
-        ],
+        history: [{squares: Array(9).fill(null) }],
         stepNumber: 0,
-        // 何手目の状態を見ているのかを表す(stateの初期値として0)
         xIsNext: true
       };
     }
