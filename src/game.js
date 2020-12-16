@@ -12,14 +12,12 @@ export default function Game (props){
   );
 }
   
-    handleClick(i) {
+    function handleClick(i) { 
       //マス目をクリックしたときに実行される 
       const history = state.history.slice(0, state.stepNumber + 1);
       const current = history[history.length - 1];
       const squares = current.squares.slice();
-      if (calculateWinner(squares) || squares[i]) {
-        return;
-      }
+      if (calculateWinner(squares) || squares[i]) 
       squares[i] = state.xIsNext ? "X" : "O";
       setState({
         history: history.concat([
@@ -30,19 +28,18 @@ export default function Game (props){
         stepNumber: history.length,
         xIsNext: !state.xIsNext
       });
-    };
-  
-    jumpTo(step) {
+    }
+    
+    jumpTo(step) 
       setState({
         stepNumber: step,
         xIsNext: (step % 2) === 0,
       });
-    }
     // xIsNext：どちらのプレーヤの手番なのかを決める 
   
-    render() {
-      const history = this.state.history;
-      const current = history[this.state.stepNumber];
+    return() => {
+      const history = state.history;
+      const current = history[state.stepNumber];
       const winner = calculateWinner(current.squares);
   
       // 着手履歴の配列をマップして画面上のボタンを表現する React 要素を作りだし、
@@ -53,7 +50,7 @@ export default function Game (props){
           'Go to game start';
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <button onClick={() => jumpTo(move)}>{desc}</button>
           </li>
         );
       });
@@ -80,6 +77,6 @@ export default function Game (props){
         </div>
       );
     }
-  }
+  
   
   
