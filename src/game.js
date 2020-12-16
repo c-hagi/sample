@@ -14,7 +14,7 @@ export default function Game (props){
   
     function handleClick(i) { 
       //マス目をクリックしたときに実行される 
-      const history = state.history.slice(0, state.stepNumber + 1);
+      const history = props.history.slice(0, stepNumber + 1);
       const current = history[history.length - 1];
       const squares = current.squares.slice();
       if (calculateWinner(squares) || squares[i]) 
@@ -28,7 +28,7 @@ export default function Game (props){
         stepNumber: history.length,
         xIsNext: !state.xIsNext
       });
-    }
+    
     
     jumpTo(step) 
       setState({
@@ -76,7 +76,4 @@ export default function Game (props){
           </div>
         </div>
       );
-    }
-  
-  
-  
+    }}
