@@ -3,47 +3,43 @@ import './index.css';
 import Board  from './Board';
 import calculateWinner from './calculateWinner.'
 
-export default class Game extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [{ squares: Array(9).fill(null) }],
-      stepNumber: 0,
-      xIsNext: true,
-    };
-  }
+export default function Game (props){
+  return (
+    <Board>
+      history={Array(9).fill(null)};
+      stepNumber={0};
+      xIsNext={true};</Board>
+  );
+}
   
-    handleClick(i) {
+    function handleClick(i) { 
       //マス目をクリックしたときに実行される 
-      const history = this.state.history.slice(0, this.state.stepNumber + 1);
+      const history = props.history.slice(0, stepNumber + 1);
       const current = history[history.length - 1];
       const squares = current.squares.slice();
-      if (calculateWinner(squares) || squares[i]) {
-        return;
-      }
-      squares[i] = this.state.xIsNext ? "X" : "O";
-      this.setState({
+      if (calculateWinner(squares) || squares[i]) 
+      squares[i] = state.xIsNext ? "X" : "O";
+      setState({
         history: history.concat([
           {
             squares: squares
           }
         ]),
         stepNumber: history.length,
-        xIsNext: !this.state.xIsNext
+        xIsNext: !state.xIsNext
       });
-    }
-  
-    jumpTo(step) {
-      this.setState({
+    
+    
+    jumpTo(step) 
+      setState({
         stepNumber: step,
         xIsNext: (step % 2) === 0,
       });
-    }
     // xIsNext：どちらのプレーヤの手番なのかを決める 
   
-    render() {
-      const history = this.state.history;
-      const current = history[this.state.stepNumber];
+    return() => {
+      const history = state.history;
+      const current = history[state.stepNumber];
       const winner = calculateWinner(current.squares);
   
       // 着手履歴の配列をマップして画面上のボタンを表現する React 要素を作りだし、
@@ -54,7 +50,7 @@ export default class Game extends React.Component {
           'Go to game start';
         return (
           <li key={move}>
-            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+            <button onClick={() => jumpTo(move)}>{desc}</button>
           </li>
         );
       });
@@ -80,7 +76,4 @@ export default class Game extends React.Component {
           </div>
         </div>
       );
-    }
-  }
-  
-  
+    }}
