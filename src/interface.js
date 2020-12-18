@@ -6,5 +6,4 @@ export interface BoardProps {
     squares: ISquare[];
     onClick: (i: number) => void;
   }
-  
 }
