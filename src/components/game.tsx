@@ -11,7 +11,7 @@ export default function Game (props){
       xIsNext={true};</Board>
   );
 }
-  
+
 function handleClick(i) { 
   //マス目をクリックしたときに実行される 
   const history = props.history.slice(0, stepNumber + 1);
