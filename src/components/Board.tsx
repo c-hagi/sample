@@ -32,4 +32,4 @@ export default function Board(props: BoardProps) {
       </div>
     </div>
   );
-}
+} 
