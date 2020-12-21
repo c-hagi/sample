@@ -3,6 +3,12 @@ import '../index.css';
 import Board  from './Board';
 import calculateWinner from './calculateWinner.'
 
+interface GameState {
+  history: History[];
+  stepNumber: number;
+  xIsNext: boolean;
+}
+
 export default class Game extends React.Component<{}, GameState> {
   constructor(props: {}) {
     super(props);
