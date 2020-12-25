@@ -2,14 +2,9 @@ import React from 'react';
 import '../index.css';
 import Board  from './Board';
 import calculateWinner from './calculateWinner.'
+import { History } from "../components/ISquare";
 
-interface GameState {
-  history: History[];
-  stepNumber: number;
-  xIsNext: boolean;
-}
-
-export default class Game extends React.Component<{}, GameState> {
+export default function Game(props: Gamestatus) {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -41,7 +36,7 @@ export default class Game extends React.Component<{}, GameState> {
     });
   }
 
-  render() {
+  return() {
     const history = this.state.history;
     const current = history[history.length - 1];
     const winner = calculateWinner(current.squares);
@@ -53,27 +48,5 @@ export default class Game extends React.Component<{}, GameState> {
         </li>
       );
     });
-
-    let status;
-    if (winner) {
-      status = "Winner: " + winner;
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
-
-    return (
-      <div className="game">
-        <div className="game-board">
-          <Board
-            squares={current.squares}
-            onClick={(i: number) => this.handleClick(i)}
-          />
-        </div>
-        <div className="game-info">
-          <div>{status}</div>
-          <ol>{moves}</ol>
-        </div>
-      </div>
-    );
   }
 }
