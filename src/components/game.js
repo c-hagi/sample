@@ -10,9 +10,10 @@ export default class Game extends React.Component {
     this.state = {
       history: [
         {
-          squares: Array(9).fill(null)
+            squares: Array(9).fill(null),
+            putState: "(0, 0)"
         }
-      ],
+    ],
       stepNumber: 0,
       xIsNext: true
     };
@@ -29,11 +30,10 @@ export default class Game extends React.Component {
     this.setState({
       history: history.concat([
         {
-          squares: squares
+            squares: squares,
+            putState: " (" + (i/3|0).toString() + ", " + (i%3).toString() + ")"
         }
-      ]),
-      stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
+    ])
     });
   }
 
@@ -51,14 +51,14 @@ export default class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+          'Go to move #' + move + step["putState"]:
+          'Go to game start';
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
+          <li key={move}>
+              <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          </li>
       );
-    });
+  });
 
     let status;
     if (winner) {
