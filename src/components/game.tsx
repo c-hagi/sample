@@ -10,7 +10,7 @@ interface GameState {
   xIsNext: boolean;
   squares: any[]; 
 }
-export default class Game extends React.Component<{},GameState>{  
+class Game extends React.Component<{},GameState>{  
   constructor(props: GameState) {
     super(props);
     this.state = {
@@ -85,3 +85,4 @@ export default class Game extends React.Component<{},GameState>{
     );
   }
 }
+export default Game;

@@ -1,13 +1,12 @@
 import React from "react";
 import '../index.css';
 import Square from './square';
-import {ISquare} from './ISquare'
 
   interface BoardProps {
     squares: ('O' | 'X' | null)[];
     onClick: (i: number) => void;
   }
-export default class Board extends React.Component<BoardProps,string> {
+class Board extends React.Component<BoardProps,string> {
   
     renderSquare(i: number) {
       return (
@@ -39,4 +38,4 @@ export default class Board extends React.Component<BoardProps,string> {
       );
     }
   }
-  
+  export default Board;
