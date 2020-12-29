@@ -8,12 +8,14 @@ interface GameState {
   history: History[];
   stepNumber: number;
   xIsNext: boolean;
+  squares: any[]; 
 }
-export default class Game extends React.Component<{},GameState> {  
+export default class Game extends React.Component<{},GameState>{  
   constructor(props: GameState) {
     super(props);
     this.state = {
-      history: [{squares: Array(9).fill(null)}],
+      history:[],
+      squares: Array(9).fill(null),
       stepNumber: 0,
       xIsNext: true,
     };
