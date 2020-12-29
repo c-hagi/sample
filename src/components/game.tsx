@@ -9,7 +9,7 @@ interface GameState {
   stepNumber: number;
   xIsNext: boolean;
 }
-export default class Game extends React.Component {
+export default class Game extends React.Component<GameState> {  
   constructor(props: GameState) {
     super(props);
     this.state = {
@@ -19,13 +19,13 @@ export default class Game extends React.Component {
     };
   }
   handleClick(i: number) {
-    const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const history = this.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? "X" : "O";
+    squares[i] = this.xIsNext ? "X" : "O";
     this.setState({
       history: history.concat([{
         squares: squares,
