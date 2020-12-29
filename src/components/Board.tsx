@@ -6,7 +6,7 @@ import Square from './square';
     squares: ('O' | 'X' | null)[];
     onClick: (i: number) => void;
   }
-class Board extends React.Component<BoardProps,string> {
+class Board extends React.Component<BoardProps> {
   
     renderSquare(i: number) {
       return (

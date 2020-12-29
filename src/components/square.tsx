@@ -1,8 +1,7 @@
 import React from "react";
-import { ISquare } from "./ISquare";
 
 interface SquareProps {
-  value: ISquare;
+  value: any;
   onClick: () => void;
 }
 

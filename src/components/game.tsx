@@ -2,24 +2,22 @@ import React from 'react';
 import '../index';
 import Board  from './Board';
 import calculateWinner from './calculateWinner.'
-import { History } from "./ISquare";
+import  ISquare from "./ISquare";
 
 interface GameState {
-  history: History[];
+  history: ISquare[];
   stepNumber: number;
   xIsNext: boolean;
-  squares: any[]; 
 }
-class Game extends React.Component<{},GameState>{  
-  constructor(props: GameState) {
+class Game extends React.Component<unknown, GameState>{
+  constructor(props: GameState){
     super(props);
     this.state = {
-      history:[],
-      squares: Array(9).fill(null),
-      stepNumber: 0,
+      history: Array(9).fill(null),
       xIsNext: true,
+      stepNumber:0,
     };
-  }
+  }  
   handleClick(i: number) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
