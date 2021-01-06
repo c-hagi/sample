@@ -1,16 +1,16 @@
 import React from 'react';
 import '../index';
 import Board  from './Board';
-import calculateWinner from './calculateWinner.'
-import  ISquare from "./ISquare";
+import calculateWinner from './calculateWinner'
+import { History } from './ISquare'
 
 interface GameState {
-  history: ISquare[];
+  history: History[];
   stepNumber: number;
   xIsNext: boolean;
 }
-class Game extends React.Component<unknown, GameState>{
-  constructor(props: GameState){
+class Game extends React.Component<{}, GameState> {
+  constructor(props: {}) {
     super(props);
     this.state = {
       history: Array(9).fill(null),
