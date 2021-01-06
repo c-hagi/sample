@@ -1,6 +1,6 @@
-interface ISquare {
-  squares: ('O' | 'X' | null)[];
+export type ISquare = 'X' | 'O' | null;
+export interface History {
+  squares: ISquare[];
   col: number; 
   row: number;
 }
-export default ISquare;
