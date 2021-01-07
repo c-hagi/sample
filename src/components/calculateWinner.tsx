@@ -15,9 +15,17 @@ import { ISquare } from './ISquare'
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       return {
+        Draw: false,
         result:squares[a],
-        line:[a, b, c]  
+        line:[a, b, c] 
       };
+    }
+  }
+  if (squares.filter((d) => !d).length === 0) {
+    return {
+      Draw: true,
+      result: null,
+      line: []
     }
   }
   return null;
