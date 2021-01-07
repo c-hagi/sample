@@ -1,5 +1,5 @@
 import React from "react";
-import { ISquare } from "./ISquare";
+import { ISquare } from  "./ISquare";
 
 interface SquareProps {
   value: ISquare;
