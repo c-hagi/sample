@@ -8,11 +8,14 @@ interface GameState {
   history: History[];
   stepNumber: number;
   xIsNext: boolean;
+  isAsc: boolean;
+
 }
 
 class Game extends React.Component<{}, GameState> {
   constructor(props:GameState) {
     super(props);
+    
 
     this.state = {
       history: [{
@@ -22,8 +25,10 @@ class Game extends React.Component<{}, GameState> {
       }],
       stepNumber: 0,
       xIsNext: true,
+      isAsc: true
     };
   }
+  
   handleClick(i: number) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -31,17 +36,23 @@ class Game extends React.Component<{}, GameState> {
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
-    squares[i] = this.state.xIsNext ? "X" : "O";
+    squares[i] = this.state.xIsNext ? "X" : "O";    
     this.setState({
       history: history.concat([{ 
         squares: squares,
         col: (i % 3) + 1,
-        row: Math.floor(i / 3) + 1 
+        row: Math.floor(i / 3) + 1 ,
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
   }
+  　Asc() {
+    this.setState({
+      isAsc: !this.state.isAsc
+    });
+  }
+
   jumpTo(step: number) {
     this.setState({
       stepNumber: step,
@@ -53,6 +64,8 @@ class Game extends React.Component<{}, GameState> {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
     const stepNumber = this.state.stepNumber;
+  
+  <div className=""></div>
     
     const moves = history.map((step, move) => {
       const decs = move ?
@@ -83,6 +96,8 @@ class Game extends React.Component<{}, GameState> {
         </div>
         <div className="game-info">
           <div>{status}</div>
+          <div><button onClick={() => this.Asc()}>並び替え</button></div>
+          <ol>{this.state.isAsc ? moves : moves.reverse()}</ol> 
           <ol>{moves}</ol>
         </div>
       </div>
