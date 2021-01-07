@@ -14,9 +14,12 @@ import { ISquare } from './ISquare'
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a],[a, b, c]  
-  //winnerが表示されない   
+      return {
+        result:squares[a],
+        line:[a, b, c]  
       };
     }
   }
+  return null;
+}
 export default　calculateWinner;
