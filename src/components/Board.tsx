@@ -19,18 +19,19 @@ function Board(props: BoardProps){
   }
     
 
+//map関数を2つ使って表示する
   return (
     <div>
       {
-        Array(3).fill(0).map((row, i) => {
+        Array(3).fill(0).map((row, a) => {
           return (
             <div className="board-row" 
-                 key={i}>
+                 key={a}>
       {
-        Array(3).fill(0).map((col,n) => {
+        Array(3).fill(0).map((col,b) => {
 
           return(
-            renderSquare(i * 3 + n)
+            renderSquare(a * 3 + b)
           )
         })
       }
