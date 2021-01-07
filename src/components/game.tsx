@@ -3,7 +3,6 @@ import '../index';
 import Board  from './Board';
 import calculateWinner from './calculateWinner'
 import { History } from './ISquare'
-import Square from './square';
 
 interface GameState {
   history: History[];
