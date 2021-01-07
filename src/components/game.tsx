@@ -98,10 +98,9 @@ class Game extends React.Component<{}, GameState> {
           <div>{status}</div>
           <div><button onClick={() => this.Asc()}>並び替え</button></div>
           <ol>{this.state.isAsc ? moves : moves.reverse()}</ol> 
-          <ol>{moves}</ol>
         </div>
       </div>
     );
   }
 }
-  export default Game;
+export default Game;
