@@ -9,14 +9,11 @@ interface GameState {
   stepNumber: number;
   xIsNext: boolean;
   isAsc: boolean;
-
 }
 
 class Game extends React.Component<{}, GameState> {
   constructor(props:GameState) {
     super(props);
-    
-
     this.state = {
       history: [{
          squares: Array(9).fill(null),
@@ -64,22 +61,7 @@ class Game extends React.Component<{}, GameState> {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
     const stepNumber = this.state.stepNumber;
-  
-  <div className=""></div>
     
-    const moves = history.map((step, move) => {
-      const decs = move ?
-      `Go to move #${move}（col: ${step.col}, row: ${step.row}）`:
-      `Go to start`;
-  return (
-        <li key={move}>
-          <button 
-          onClick={() => this.jumpTo(move)}
-          className={stepNumber === move? "bold-btn" : ""}>{decs}
-        　</button>
-        </li>
-      );
-    });
     let status;
     if (winner) {
       if (winner.Draw) {
@@ -87,16 +69,32 @@ class Game extends React.Component<{}, GameState> {
       } else {
         status = "Winner: " + winner.result; 
       }
-      
-    } else {
+      } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
+      }
+
+      const moves = history.map((step, move) => {
+        const decs = move ?
+        `Go to move #${move}（ ${step.col}, ${step.row}）`:
+        `Go to start`;
+      
+    return (
+          <li key={move}>
+            <button 
+            onClick={() => this.jumpTo(move)}
+            className={stepNumber === move? "bold-btn" : ""}>{decs}
+          　</button>
+          </li>
+        );
+      });
+      
     return (
       <div className="game">
         <div className="game-board">
           <Board
             squares={current.squares}
             onClick={(i: number) => this.handleClick(i)}
+            highlightCells={winner ? winner.line : []}
           />
         </div>
         <div className="game-info">
