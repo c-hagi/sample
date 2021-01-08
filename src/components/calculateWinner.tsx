@@ -21,7 +21,7 @@ import { ISquare } from './ISquare'
       };
     }
   }
-  if (squares.filter((d) => !d).length === 0) {
+  if (squares.filter((elemrnt) => !elemrnt).length === 0) {
     return {
       Draw: true,
       result: null,
